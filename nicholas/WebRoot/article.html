@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="NicholasApp">
+<head>
+    <script src="http://nicholasway.cn/resources/js/load.static.js"></script>
+    <link href="http://nicholasway.cn/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="http://nicholasway.cn/resources/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div ng-include src="'header.html'"></div>
+<div class="ni-main container" ng-controller="ArticleDetailCtrl">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="ni-article-detail-container">
+                <div class="ni-article-detail-title" ng-bind="article.t_title">
+
+                </div>
+                <div class="ni-article-detail-content" ng-bind-html="article.t_content|toHtml">
+
+                </div>
+            </div>
+            <div class="comment">
+                <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+                <div id="SOHUCS" sid="{{article.t_id}}"></div>
+                <script>
+                    (function(){
+                        var appid = 'cyrL9c29E',
+                                conf = 'prod_b15a2b8be4e6c3a4e5b98fefd1390202';
+                        var doc = document,
+                                s = doc.createElement('script'),
+                                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+                        s.type = 'text/javascript';
+                        s.charset = 'utf-8';
+                        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+                        h.insertBefore(s,h.firstChild);
+                        window.SCS_NO_IFRAME = true;
+                    })()
+                </script>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-include src="'aside.html'"></div>
+        </div>
+    </div>
+</div>
+<div ng-include src="'footer.html'"></div>
+<script type="text/javascript" src="http://s4.cnzz.com/z_stat.php?id=1255115582&web_id=1255115582" language="JavaScript"></script>
+</body>
+<script src="http://nicholasway.cn/resources/js/angular.min.js"></script>
+<script src="http://nicholasway.cn/resources/js/angular-ui-router.min.js"></script>
+<script src="http://nicholasway.cn/resources/js/ngLoadScript.js"></script>
+<script src="http://nicholasway.cn/resources/js/NicholasApp.js"></script>
