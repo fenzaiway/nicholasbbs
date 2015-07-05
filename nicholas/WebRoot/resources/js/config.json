@@ -1,0 +1,9 @@
+{
+    "db":{
+        "host":"xxx.xxx.xxx.xxx",
+        "port":3306,
+        "user":"root",
+        "password":"zaoan008",
+        "dbName":"nicholas_bbs"
+    }
+}
