@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="NicholasApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>添加文章类型</title>
+    <script src="../resources/js/config.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top: 10%;">
+    <div class="page-header">
+        <h1>添加文章类型</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-9" ng-controller="TypeFormCtrl">
+            <form class="form-horizontal" action="addType">
+                <div class="form-group">
+                    <label for="typename" class="col-sm-2 control-label">文章类型</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="typename" ng-model="typename" placeholder="请输入文章类型">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default" ng-click="postType();">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <div>类型</div>
+            <div id="typeList" ng-controller="TypeListCtrl">
+                <ul>
+                    <li ng-repeat="t in types">{{t.type}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+</script>
+</html>
