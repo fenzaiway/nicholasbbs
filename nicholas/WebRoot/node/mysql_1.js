@@ -7,11 +7,11 @@ var mysql  = require("mysql");
 function querySql(callback,sql)
 {
     var connection = mysql.createConnection({
-       host : "58.53.199.76",
+       host : "127.0.0.1",
         user:"root",
-        password:"lutong2014ABC",
+        password:"root",
         database:"nicholas_bbs",
-        port:"9005"
+        port:"3306"
     });
 
     connection.query(sql, function (err,rows) {
