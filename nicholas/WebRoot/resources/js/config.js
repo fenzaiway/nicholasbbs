@@ -43,12 +43,14 @@ var apiURL = "http://localhost:3000/";
     var ni_bootstrap_js = resourcesJSPath+"bootstrap.js";
     var ni_loadScript_js = resourcesJSPath + "ngLoadScript.js";
     var ni_jquery_js = resourcesJSPath+"jquery.min.js";
+    var ni_article_service_js = resourcesJSPath+"ArticleService.js";
     var ni_nicholas_js = resourcesJSPath+"NicholasApp.js";
     var jsArray = [ni_jquery_js,
                     ni_angular_js,
                     ni_angular_ui_js,
                     ni_bootstrap_js,
                     ni_loadScript_js,
+                    ni_article_service_js,
                     ni_nicholas_js];
 
     //动态添加

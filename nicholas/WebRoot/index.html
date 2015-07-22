@@ -1,66 +1,63 @@
 ﻿<!DOCTYPE html>
 <html ng-app="NicholasApp">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Nicholas学习笔记</title>
-    <meta name="baidu-site-verification" content="SgwCDj7N3e">
-    <meta name="description" content="网络日记本">
-    <meta name="keywords" content="angular，nodejs，javascript，HTML5，CSS3，前端开发，Java">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="http://nicholasway.cn/resources/imgs/favicon.ico">
-    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://nicholasway.cn/resources/css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div ng-include src="'header.html'"></div>
-<div class="ni-main container" ng-controller="ArticleListCtrl">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="ni-article-list-container">
-                <div class="ni-article-list-header">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Nicholas学习笔记</title>
+        <meta name="baidu-site-verification" content="SgwCDj7N3e">
+        <meta name="description" content="网络日记本">
+        <meta name="keywords" content="angular，nodejs，javascript，HTML5，CSS3，前端开发，Java">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="http://nicholasway.cn/resources/imgs/favicon.ico">
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://nicholasway.cn/resources/css/style.css" rel="stylesheet">
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div ng-include src="'header.html'"></div>
+        <div class="ni-main container" ng-controller="ArticleListCtrl">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="ni-article-list-container">
+                        <div class="ni-article-list-header">
 
-                </div>
-                <ul class="ni-article-list">
-                <li class="ni-article" ng-repeat="item in titles">
-                    <div class="ni-article-container">
-                        <span class="ni-article-type">{{item.type}}</span>
-                        <span class="ni-article-title"><a href="article.html#/detail?id={{item.t_id}}">{{item.t_title}}</a></span>
-                        <time class="ni-article-time">{{item.t_time | date:'yyyy-MM-dd HH:mm:ss'}}</time>
-                    </div>
-                </li>
-            </ul>
-                <div class="ni-article-pagination">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
+                        </div>
+                        <ul class="ni-article-list">
+                        <li class="ni-article" ng-repeat="item in titles">
+                            <div class="ni-article-container">
+                                <span class="ni-article-type">{{item.type}}</span>
+                                <span class="ni-article-title"><a target="_blank" href="article.html#/detail?id={{item.t_id}}">{{item.t_title}}</a></span>
+                                <time class="ni-article-time">{{item.t_time | date:'yyyy-MM-dd HH:mm:ss'}}</time>
+                            </div>
                         </li>
                     </ul>
+                        <div class="ni-article-pagination">
+                            <ul class="pagination" ng-show="totalPage>1">
+                                <li ng-class="{true:'active'}[pageNow==1]"><a href="javascript:void(0)"
+                                                                              ng-click="pageNow=1;load()">首页</a></li>
+                                <li ng-class="{true:'disabled'}[pageNow==1]"><a href="javascript:void(0);" ng-click="prev()">上一页</a></li>
+                                <li ng-repeat="page in pages"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>
+                                <li ng-class="{true:'disabled'}[pageNow==totalPage]"><a href="javascript:void(0);" ng-click="next()">下一页</a>
+                                </li>
+                                <li ng-class="{true:'active'}[pageNow==totalPage]"><a href="javascript:void(0)"
+                                                                                      ng-click="pageNow=totalPage;load()">末页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div ng-include src="'aside.html'"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div ng-include src="'aside.html'"></div>
+        <div ng-include src="'footer.html'"></div>
+        <div style="display: none;">
+            <script type="text/javascript" src="http://s4.cnzz.com/z_stat.php?id=1255115582&web_id=1255115582" language="JavaScript"></script>
         </div>
-    </div>
-</div>
-<div ng-include src="'footer.html'"></div>
-</body>
-<script src="http://nicholasway.cn/resources/js/angular.min.js"></script>
-<script src="http://nicholasway.cn/resources/js/angular-ui-router.min.js"></script>
-<script src="http://nicholasway.cn/resources/js/ngLoadScript.js"></script>
-<script src="http://nicholasway.cn/resources/js/NicholasApp.js"></script>
-<script type="text/javascript" src="http://s4.cnzz.com/z_stat.php?id=1255115582&web_id=1255115582" language="JavaScript"></script>
+        <script src="http://nicholasway.cn/resources/js/angular.min.js"></script>
+        <script src="http://nicholasway.cn/resources/js/angular-ui-router.min.js"></script>
+        <script src="http://nicholasway.cn/resources/js/ngLoadScript.js"></script>
+        <script src="http://nicholasway.cn/resources/js/ArticleService.js"></script>
+        <script src="http://nicholasway.cn/resources/js/NicholasApp.js"></script>
+    </body>
+</html>

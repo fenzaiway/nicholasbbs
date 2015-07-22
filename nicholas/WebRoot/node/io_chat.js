@@ -108,6 +108,45 @@ app.post("/addBlogArticle", function (req, res) {
     });
 });
 
+app.post("/updateBlogArticle", function (req, res) {
+    var rowInfo = {};
+    var idJson = {};
+    idJson.t_id = req.body.articleId;
+    rowInfo.t_title = req.body.title;
+    rowInfo.t_content = req.body.content;
+    rowInfo.t_type_id = req.body.typeId;
+    baseModel.modify("t_blog_article",idJson,rowInfo, function () {
+        res.header("Content-Type", "text/plain");
+        res.end("更新成功");
+    });
+});
+
+/**分页*/
+app.get("/total", function (req, res) {
+    var sql = "select count(*) as total from t_blog_article";
+    baseModel.findBySql(sql,function (rows) {
+        /*res.header("Access-Control-Allow-Origin", "*");
+         res.header("Access-Control-Allow-Headers", "X-Requested-With");
+         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+         res.header("Content-Type", "application/json;charset=utf-8");*/
+        res.end(JSON.stringify(rows));//普通的json
+    });
+});
+
+app.get("/list", function (req, res) {
+
+    console.info(req);
+    var sql = "select bt.type,ba.t_id,ba.t_title,ba.t_time from t_blog_type as bt, t_blog_article as ba where ba.t_type_id=bt.id order by ba.t_id desc limit "
+        + (req.query["pageNow"]-1)*req.query["pageSize"]
+        + "," + req.query["pageSize"];
+    baseModel.findBySql(sql,function (rows) {
+        /*res.header("Access-Control-Allow-Origin", "*");
+         res.header("Access-Control-Allow-Headers", "X-Requested-With");
+         res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+         res.header("Content-Type", "application/json;charset=utf-8");*/
+        res.end(JSON.stringify(rows));//普通的json
+    });
+});
 
 
 var server = app.listen(3000);
